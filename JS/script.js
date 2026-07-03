@@ -243,3 +243,43 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+/* ==========================================================================
+   LÓGICA DA SEÇÃO FAQ (ACCORDION DE EXPANSÃO SUAVE)
+   ========================================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+    // Seleciona todos os botões de pergunta da FAQ
+    const faqButtons = document.querySelectorAll('.faq-question-btn');
+
+    // Associa o evento de clique para cada botão
+    faqButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const faqItem = button.parentElement;
+            const answerPanel = faqItem.querySelector('.faq-answer-panel');
+            const isCurrentlyActive = faqItem.classList.contains('active');
+
+            // Fecha todos os outros itens da FAQ que estiverem abertos no momento
+            document.querySelectorAll('.faq-item.active').forEach(activeItem => {
+                if (activeItem !== faqItem) {
+                    activeItem.classList.remove('active');
+                    activeItem.querySelector('.faq-answer-panel').style.maxHeight = null;
+                    activeItem.querySelector('.faq-question-btn').setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Alterna o estado de ativo do item clicado
+            if (!isCurrentlyActive) {
+                // Adiciona a classe active para rotacionar a seta e mudar cor do título
+                faqItem.classList.add('active');
+                // Define o max-height com base na altura real do conteúdo para expansão suave
+                answerPanel.style.maxHeight = answerPanel.scrollHeight + 'px';
+                button.setAttribute('aria-expanded', 'true');
+            } else {
+                // Remove a classe active e zera o max-height para recolher o conteúdo
+                faqItem.classList.remove('active');
+                answerPanel.style.maxHeight = null;
+                button.setAttribute('aria-expanded', 'false');
+            }
+        });
+    });
+});

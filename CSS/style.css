@@ -1475,6 +1475,106 @@ ul {
 }
 
 /* ==========================================================================
+   SEÇÃO FAQ (PERGUNTAS FREQUENTES - ACCORDION)
+   ========================================================================== */
+
+/* Estilos de fundo e espaçamento para a seção de FAQ */
+.faq-section {
+    background-color: var(--color-bg-dark);
+}
+
+/* Container centralizado e limitado para o accordion das perguntas */
+.faq-accordion-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Item individual da FAQ com borda dourada sutil e transições suaves */
+.faq-item {
+    background-color: var(--color-bg-card);
+    border: 1px solid rgba(197, 168, 128, 0.1);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    transition: var(--transition-smooth);
+}
+
+/* Efeito de hover no card para destacar interação */
+.faq-item:hover {
+    border-color: rgba(197, 168, 128, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Botão invisível da pergunta para acessibilidade e usabilidade */
+.faq-question-btn {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+    font-family: var(--font-body);
+}
+
+/* Texto da pergunta */
+.question-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-text-white);
+    transition: var(--transition-fast);
+}
+
+/* Efeito hover no botão da pergunta alterando a cor para dourado */
+.faq-question-btn:hover .question-text {
+    color: var(--color-gold);
+}
+
+/* Ícone de seta dourada no canto direito */
+.faq-toggle-icon {
+    font-size: 14px;
+    color: var(--color-gold);
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    margin-left: 15px;
+}
+
+/* Painel de resposta com max-height zero para transição suave de abertura */
+.faq-answer-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Conteúdo interno da resposta para adicionar espaçamentos internos confortáveis */
+.faq-answer-content {
+    padding: 0 24px 20px;
+    font-size: 15px;
+    color: var(--color-text-gray);
+    line-height: 1.6;
+}
+
+/* Estado ativo do card da FAQ (aberto) */
+.faq-item.active {
+    border-color: var(--color-gold);
+}
+
+/* Título ganha uma cor de dourado claro quando ativo */
+.faq-item.active .question-text {
+    color: var(--color-gold-light);
+}
+
+/* Rotação do ícone em 180 graus quando ativo */
+.faq-item.active .faq-toggle-icon {
+    transform: rotate(180deg);
+    color: var(--color-gold-light);
+}
+
+/* ==========================================================================
    MEDIA QUERIES (RESPONSIVIDADE COMPLETA)
    ========================================================================== */
 
